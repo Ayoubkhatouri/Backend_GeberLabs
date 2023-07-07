@@ -26,6 +26,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     private final AuthenticationManager authenticationManager;
 
 
+
     @Override
      public AuthenticationResponse register(RegisterRequest request) {
         boolean userExists = userRepository
@@ -66,7 +67,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     }
 
     @Override
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    public AuthenticationResponse authenticate(AuthenticationRequest request) throws Exception {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -79,6 +80,10 @@ public class AuthenticationServiceImpl implements AuthenticationService{
         }
 
         var user=userRepository.findByEmail(request.getEmail()).orElseThrow();
+
+        if (!passwordEncoder.matches(request.getPassword(),user.getPassword())) {
+            throw new Exception("Invalid password");
+        }
         var jwtToken=jwtService.generateToken(user);
 
 

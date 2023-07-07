@@ -6,6 +6,6 @@ import com.GberLabs.Islamic_Center_Backend.auth.RegisterRequest;
 
 public interface AuthenticationService {
     AuthenticationResponse register(RegisterRequest request);
-    AuthenticationResponse authenticate(AuthenticationRequest request);
+    AuthenticationResponse authenticate(AuthenticationRequest request) throws Exception;
 
 }

@@ -6,6 +6,7 @@ import com.GberLabs.Islamic_Center_Backend.auth.AuthenticationResponse;
 import com.GberLabs.Islamic_Center_Backend.auth.RegisterRequest;
 import com.GberLabs.Islamic_Center_Backend.service.AuthenticationService;
 import com.GberLabs.Islamic_Center_Backend.service.EmailSenderService;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +32,9 @@ public class AuthenticationController {
     }
 
     @PostMapping("/auth/sendEmail")
-    public String senEmail(@RequestBody EmailSender emailSender){
-           return emailSenderService.sendEmail(emailSender.toEmail,emailSender.subject,emailSender.body);
+    public EmailResponse senEmail(@RequestBody EmailSender emailSender){
+        EmailResponse emailResponse=new EmailResponse(emailSenderService.sendEmail(emailSender.toEmail,emailSender.subject,emailSender.body));
+           return emailResponse;
     }
 
 }
@@ -42,4 +44,10 @@ class EmailSender{
     String toEmail;
     String subject;
     String body;
+}
+
+@Data
+@AllArgsConstructor
+class  EmailResponse{
+    int code;
 }

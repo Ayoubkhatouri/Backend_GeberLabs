@@ -6,6 +6,7 @@ import com.GberLabs.Islamic_Center_Backend.auth.AuthenticationResponse;
 import com.GberLabs.Islamic_Center_Backend.auth.RegisterRequest;
 import com.GberLabs.Islamic_Center_Backend.service.AuthenticationService;
 import com.GberLabs.Islamic_Center_Backend.service.EmailSenderService;
+import jakarta.mail.MessagingException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +33,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/auth/sendEmail")
-    public EmailResponse senEmail(@RequestBody EmailSender emailSender){
+    public EmailResponse senEmail(@RequestBody EmailSender emailSender) throws MessagingException {
         EmailResponse emailResponse=new EmailResponse(emailSenderService.sendEmail(emailSender.toEmail,emailSender.subject,emailSender.body));
            return emailResponse;
     }

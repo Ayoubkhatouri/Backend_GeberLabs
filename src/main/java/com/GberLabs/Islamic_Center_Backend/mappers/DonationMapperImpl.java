@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class DonationMapperImpl {
     public DonationDTO fromDonation(Donation donation){
+        if(donation==null) return null;
         return null;
     }
     public Donation fromDonationDTO(DonationDTO donationDTO){
+        if(donationDTO==null) return null;
         return null;
     }
 }

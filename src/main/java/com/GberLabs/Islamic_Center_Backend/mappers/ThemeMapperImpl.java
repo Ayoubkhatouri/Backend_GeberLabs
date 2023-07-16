@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ThemeMapperImpl {
     public ThemeDTO fromTheme(Theme theme){
+        if(theme==null) return null;
         return null;
     }
     public Theme fromThemDTO(ThemeDTO themeDTO){
+        if(themeDTO==null) return null;
         return null;
     }
 }

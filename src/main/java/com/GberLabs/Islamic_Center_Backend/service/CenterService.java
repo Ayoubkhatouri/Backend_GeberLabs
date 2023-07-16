@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface CenterService {
     CenterDTO saveCenter(CenterDTO centerDTO);
-    List<Center> getAllCenters();
-    Center getCenter(Long id);
+    List<CenterDTO> getAllCenters();
+    CenterDTO getCenter(Long id);
+    CenterDTO
     void deleteCenter(Long id);
 }

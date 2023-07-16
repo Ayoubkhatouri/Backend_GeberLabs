@@ -5,10 +5,9 @@ import com.GberLabs.Islamic_Center_Backend.dtos.CenterDTO;
 import com.GberLabs.Islamic_Center_Backend.entities.Center;
 import com.GberLabs.Islamic_Center_Backend.service.CenterService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/center")
@@ -19,5 +18,13 @@ public class CenterController {
     @PostMapping("/admin/create")
     public CenterDTO createCenter(@RequestBody CenterDTO centerDTO){
         return centerService.saveCenter(centerDTO);
+    }
+    @GetMapping("/anyOne/getAll")
+    public List<CenterDTO> getAllCenters(){
+        return centerService.getAllCenters();
+    }
+    @GetMapping("/anyOne/getCenter/{id}")
+    public CenterDTO getCenter(@PathVariable Long id){
+        return centerService.getCenter(id);
     }
 }

@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -37,14 +38,15 @@ public class CenterServiceImpl implements CenterService{
     }
 
     @Override
-    public List<Center> getAllCenters() {
-        return null;
+    public List<CenterDTO> getAllCenters() {
+        return centerRepository.findAll().stream().map(c->centerMapper.fromCenter(c)).collect(Collectors.toList());
     }
 
     @Override
-    public Center getCenter(Long id) {
-        return null;
+    public CenterDTO getCenter(Long id) {
+        return centerMapper.fromCenter(centerRepository.findById(id).orElseThrow());
     }
+
 
     @Override
     public void deleteCenter(Long id) {

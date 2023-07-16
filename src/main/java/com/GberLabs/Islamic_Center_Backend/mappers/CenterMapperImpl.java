@@ -19,6 +19,7 @@ public class CenterMapperImpl {
     private final UserRepository userRepository;
 
     public CenterDTO fromCenter(Center center){
+        if(center==null) return null;
         CenterDTO centerDTO=new CenterDTO();
         BeanUtils.copyProperties(center,centerDTO);
         centerDTO.setOwnerId(center.getUser().getId());
@@ -27,6 +28,7 @@ public class CenterMapperImpl {
         return centerDTO;
     }
     public Center fromCenterDTo(CenterDTO centerDTO){
+        if(centerDTO==null) return null;
         Center center=new Center();
         BeanUtils.copyProperties(centerDTO,center);
         center.setUser(userRepository.findById(centerDTO.getOwnerId()).orElseThrow());

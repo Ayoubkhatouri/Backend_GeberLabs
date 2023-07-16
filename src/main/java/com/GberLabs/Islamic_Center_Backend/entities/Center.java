@@ -19,8 +19,7 @@ public class Center {
     @OneToOne
     private User user;
 
-    @OneToMany(mappedBy = "center")
-    private List<Review> reviews=new ArrayList<>();
+
 
     @OneToMany(mappedBy = "center")
     private List<Donation> donations=new ArrayList<>();

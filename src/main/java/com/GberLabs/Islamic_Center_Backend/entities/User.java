@@ -21,7 +21,7 @@ import java.util.List;
 @Entity
 public class User implements UserDetails {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstname;
     private String  lastname;
@@ -35,10 +35,7 @@ public class User implements UserDetails {
 
     @OneToOne(mappedBy = "user")
     private Center center;
-
-    @OneToMany(mappedBy = "user")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Review> reviews;
+    
 
 
 

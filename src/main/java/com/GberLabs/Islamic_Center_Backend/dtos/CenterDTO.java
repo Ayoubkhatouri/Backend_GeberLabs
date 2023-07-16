@@ -1,0 +1,17 @@
+package com.GberLabs.Islamic_Center_Backend.dtos;
+
+import lombok.Data;
+
+import java.util.List;
+
+
+@Data
+public class CenterDTO {
+    private  Long id;
+    private String name;
+    private String Description;
+    private String address ;
+    private Long ownerId;
+    private List<DonationDTO> donationDTOList;
+    private ThemeDTO themeDTO;
+}

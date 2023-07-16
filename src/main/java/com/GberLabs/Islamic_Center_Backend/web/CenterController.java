@@ -17,7 +17,7 @@ public class CenterController {
     private final CenterService centerService;
 
     @PostMapping("/admin/create")
-    public Center createCenter(@RequestBody CenterDTO centerDTO){
+    public CenterDTO createCenter(@RequestBody CenterDTO centerDTO){
         return centerService.saveCenter(centerDTO);
     }
 }

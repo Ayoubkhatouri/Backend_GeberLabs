@@ -21,13 +21,19 @@ public class CenterServiceImpl implements CenterService{
     private CenterMapperImpl centerMapper;
 
     @Override
-    public Center saveCenter(CenterDTO centerDTO) {
-        Center center=centerMapper.fromCenterDTo(centerDTO);
-        User user=userRepository.findById(centerDTO.getOwnerId()).orElseThrow();
-        user.setRole(Role.ADMIN);
-        user.setCenter(center);
-        userRepository.save(user);
-        return centerRepository.save(center);
+    public CenterDTO saveCenter(CenterDTO centerDTO) {
+        User user = userRepository.findById(centerDTO.getOwnerId()).orElseThrow();
+
+        if (user.getCenter() != null) {
+
+            return centerMapper.fromCenter(user.getCenter());
+        } else {
+            Center center = centerMapper.fromCenterDTo(centerDTO);
+            user.setCenter(center);
+            userRepository.save(user);
+            Center savedCenter = centerRepository.save(center);
+            return centerMapper.fromCenter(savedCenter);
+        }
     }
 
     @Override

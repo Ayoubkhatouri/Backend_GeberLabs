@@ -6,7 +6,7 @@ import com.GberLabs.Islamic_Center_Backend.entities.Center;
 import java.util.List;
 
 public interface CenterService {
-    Center saveCenter(CenterDTO centerDTO);
+    CenterDTO saveCenter(CenterDTO centerDTO);
     List<Center> getAllCenters();
     Center getCenter(Long id);
     void deleteCenter(Long id);

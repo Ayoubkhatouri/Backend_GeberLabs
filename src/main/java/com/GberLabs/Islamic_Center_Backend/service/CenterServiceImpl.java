@@ -20,6 +20,8 @@ public class CenterServiceImpl implements CenterService{
     private UserRepository userRepository;
     private CenterRepository centerRepository;
     private CenterMapperImpl centerMapper;
+    private DonationService donationService;
+    private ThemeService themeService;
 
     @Override
     public CenterDTO saveCenter(CenterDTO centerDTO) {
@@ -47,9 +49,23 @@ public class CenterServiceImpl implements CenterService{
         return centerMapper.fromCenter(centerRepository.findById(id).orElseThrow());
     }
 
+    @Override
+    public CenterDTO editCenter(Long id, String name, String description, String address) {
+        Center center=centerRepository.findById(id).orElseThrow();
+        center.setName(name);
+        center.setDescription(description);
+        center.setAddress(address);
+        Center c=centerRepository.save(center);
+        return centerMapper.fromCenter(c);
+    }
+
 
     @Override
     public void deleteCenter(Long id) {
-
+        Center center=centerRepository.findById(id).orElseThrow();
+        center.getDonations().forEach(d->donationService.deleteDonation(d.getId()));
+        if(center.getTheme()!=null)
+        themeService.deleteTheme(center.getTheme().getId());
+        centerRepository.delete(center);
     }
 }

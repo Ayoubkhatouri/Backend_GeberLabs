@@ -9,6 +9,6 @@ public interface CenterService {
     CenterDTO saveCenter(CenterDTO centerDTO);
     List<CenterDTO> getAllCenters();
     CenterDTO getCenter(Long id);
-    CenterDTO
+    CenterDTO editCenter(Long id,String name,String description,String address);
     void deleteCenter(Long id);
 }

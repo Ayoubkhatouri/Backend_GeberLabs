@@ -12,7 +12,7 @@ import java.util.List;
 @Entity @AllArgsConstructor @NoArgsConstructor
 @Data
 public class HomePage {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToMany(mappedBy = "homePage")

@@ -25,4 +25,7 @@ public class HomePage {
     @OneToMany(mappedBy = "homePage")
     private List<Slide> slides=new ArrayList<>();
 
+    @OneToOne
+    private Center center;
+
 }

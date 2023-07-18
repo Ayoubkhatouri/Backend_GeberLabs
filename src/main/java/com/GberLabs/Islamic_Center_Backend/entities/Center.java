@@ -28,5 +28,8 @@ public class Center {
     @OneToOne(mappedBy = "center")
     private HeaderFooter headerFooter;
 
+    @OneToOne(mappedBy = "center")
+    private HomePage homePage;
+
 
 }

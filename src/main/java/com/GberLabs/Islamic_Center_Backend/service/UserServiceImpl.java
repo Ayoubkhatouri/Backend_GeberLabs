@@ -1,6 +1,7 @@
 package com.GberLabs.Islamic_Center_Backend.service;
 
 import com.GberLabs.Islamic_Center_Backend.dtos.UserDTO;
+import com.GberLabs.Islamic_Center_Backend.entities.Role;
 import com.GberLabs.Islamic_Center_Backend.entities.User;
 import com.GberLabs.Islamic_Center_Backend.mappers.UserMapperImpl;
 import com.GberLabs.Islamic_Center_Backend.repositories.UserRepository;
@@ -19,5 +20,13 @@ public class UserServiceImpl  implements UserService{
     public List<UserDTO> allUsers() {
         List<User> users=userRepository.findAll();
         return users.stream().map(u->userMapper.fromUser(u)).collect(Collectors.toList());
+    }
+
+    @Override
+    public UserDTO userToAdmin(Long id) {
+        User user=userRepository.findById(id).orElseThrow();
+        user.setRole(Role.ADMIN);
+        User savedUser= userRepository.save(user);
+        return userMapper.fromUser(savedUser);
     }
 }

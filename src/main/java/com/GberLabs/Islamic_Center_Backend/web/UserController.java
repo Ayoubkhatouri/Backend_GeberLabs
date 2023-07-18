@@ -20,4 +20,9 @@ public class UserController {
     public List<UserDTO> getAll(){
         return userService.allUsers();
     }
+
+    @PostMapping("/fromUserToAdmin/{id}")
+    public UserDTO toAdmin(@PathVariable Long id){
+        return  userService.userToAdmin(id);
+    }
 }

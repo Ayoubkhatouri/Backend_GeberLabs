@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
 public class Center {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String Description;
@@ -19,8 +19,7 @@ public class Center {
     @OneToOne
     private User user;
 
-    @OneToMany(mappedBy = "center")
-    private List<Review> reviews=new ArrayList<>();
+
 
     @OneToMany(mappedBy = "center")
     private List<Donation> donations=new ArrayList<>();

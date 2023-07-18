@@ -1,14 +1,9 @@
-package com.GberLabs.Islamic_Center_Backend.entities;
+package com.GberLabs.Islamic_Center_Backend.dtos;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Entity @AllArgsConstructor @NoArgsConstructor
 @Data
-public class Theme {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ThemeDTO {
     private Long id;
     private String font;
     private String colorLightPrimary;
@@ -21,6 +16,5 @@ public class Theme {
     private String colorDanger;
     private String logo;
     private String favicon;
-    @OneToOne
-    private Center center;
+    private Long centerId;
 }

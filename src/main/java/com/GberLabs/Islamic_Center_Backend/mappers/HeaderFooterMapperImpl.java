@@ -21,7 +21,7 @@ public class HeaderFooterMapperImpl {
         headerFooterDTO.setCenterId(headerFooter.getCenter().getId());
         return headerFooterDTO;
     }
-    private HeaderFooter fromHeaderFooter(HeaderFooterDTO headerFooterDTO){
+    private HeaderFooter fromHeaderFooterDTO(HeaderFooterDTO headerFooterDTO){
         if(headerFooterDTO==null) return null;
         HeaderFooter headerFooter=new HeaderFooter();
         BeanUtils.copyProperties(headerFooterDTO,headerFooter);

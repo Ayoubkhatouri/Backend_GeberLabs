@@ -18,14 +18,15 @@ public class Center {
     private String address ;
     @OneToOne
     private User user;
-
-
-
+    
     @OneToMany(mappedBy = "center")
     private List<Donation> donations=new ArrayList<>();
 
     @OneToOne(mappedBy = "center")
     private Theme theme;
+
+    @OneToOne(mappedBy = "center")
+    private HeaderFooter headerFooter;
 
 
 }

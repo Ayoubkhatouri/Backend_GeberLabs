@@ -14,4 +14,6 @@ public class CenterDTO {
     private Long ownerId;
     private List<DonationDTO> donationDTOList;
     private ThemeDTO themeDTO;
+    private HeaderFooterDTO headerFooterDTO;
+    private HomePageDTO homePageDTO;
 }

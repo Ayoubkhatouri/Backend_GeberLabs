@@ -24,6 +24,7 @@ public class CenterMapperImpl {
         BeanUtils.copyProperties(center,centerDTO);
         centerDTO.setOwnerId(center.getUser().getId());
         centerDTO.setDonationDTOList(center.getDonations().stream().map(d->donationMapper.fromDonation(d)).collect(Collectors.toList()));
+
         centerDTO.setThemeDTO(themeMapper.fromTheme(center.getTheme()));
         return centerDTO;
     }
@@ -33,6 +34,7 @@ public class CenterMapperImpl {
         BeanUtils.copyProperties(centerDTO,center);
         center.setUser(userRepository.findById(centerDTO.getOwnerId()).orElseThrow());
            center.setDonations(centerDTO.getDonationDTOList().stream().map(d->donationMapper.fromDonationDTO(d)).collect(Collectors.toList()));
+
         center.setTheme(themeMapper.fromThemDTO(centerDTO.getThemeDTO()));
         return center;
     }

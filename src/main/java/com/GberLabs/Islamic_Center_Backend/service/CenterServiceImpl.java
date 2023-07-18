@@ -28,7 +28,6 @@ public class CenterServiceImpl implements CenterService{
         User user = userRepository.findById(centerDTO.getOwnerId()).orElseThrow();
 
         if (user.getCenter() != null) {
-
             return centerMapper.fromCenter(user.getCenter());
         } else {
             Center center = centerMapper.fromCenterDTo(centerDTO);

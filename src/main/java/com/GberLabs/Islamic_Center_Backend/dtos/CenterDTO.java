@@ -10,7 +10,7 @@ public class CenterDTO {
     private  Long id;
     private String name;
     private String Description;
-    private String address ;
+    private String address;
     private Long ownerId;
     private List<DonationDTO> donationDTOList;
     private ThemeDTO themeDTO;

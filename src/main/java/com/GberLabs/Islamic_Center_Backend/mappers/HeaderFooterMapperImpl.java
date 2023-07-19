@@ -13,7 +13,7 @@ public class HeaderFooterMapperImpl {
 
     private final CenterRepository centerRepository;
 
-    private HeaderFooterDTO fromHeaderFooter(HeaderFooter headerFooter){
+    public HeaderFooterDTO fromHeaderFooter(HeaderFooter headerFooter){
         if(headerFooter==null)  return null;
         HeaderFooterDTO headerFooterDTO=new HeaderFooterDTO();
         BeanUtils.copyProperties(headerFooter,headerFooterDTO);
@@ -21,7 +21,7 @@ public class HeaderFooterMapperImpl {
         headerFooterDTO.setCenterId(headerFooter.getCenter().getId());
         return headerFooterDTO;
     }
-    private HeaderFooter fromHeaderFooterDTO(HeaderFooterDTO headerFooterDTO){
+    public HeaderFooter fromHeaderFooterDTO(HeaderFooterDTO headerFooterDTO){
         if(headerFooterDTO==null) return null;
         HeaderFooter headerFooter=new HeaderFooter();
         BeanUtils.copyProperties(headerFooterDTO,headerFooter);

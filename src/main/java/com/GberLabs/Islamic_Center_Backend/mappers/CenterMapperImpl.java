@@ -17,6 +17,7 @@ public class CenterMapperImpl {
     private final DonationMapperImpl donationMapper;
     private final ThemeMapperImpl themeMapper;
     private final UserRepository userRepository;
+    private final HeaderFooterMapperImpl headerFooterMapper;
 
     public CenterDTO fromCenter(Center center){
         if(center==null) return null;
@@ -25,6 +26,7 @@ public class CenterMapperImpl {
         centerDTO.setOwnerId(center.getUser().getId());
         centerDTO.setDonationDTOList(center.getDonations().stream().map(d->donationMapper.fromDonation(d)).collect(Collectors.toList()));
         centerDTO.setThemeDTO(themeMapper.fromTheme(center.getTheme()));
+        centerDTO.setHeaderFooterDTO(headerFooterMapper.fromHeaderFooter(center.getHeaderFooter()));
         return centerDTO;
     }
     public Center fromCenterDTo(CenterDTO centerDTO){
@@ -34,6 +36,7 @@ public class CenterMapperImpl {
         center.setUser(userRepository.findById(centerDTO.getOwnerId()).orElseThrow());
         center.setDonations(centerDTO.getDonationDTOList().stream().map(d->donationMapper.fromDonationDTO(d)).collect(Collectors.toList()));
         center.setTheme(themeMapper.fromThemDTO(centerDTO.getThemeDTO()));
+        center.setHeaderFooter(headerFooterMapper.fromHeaderFooterDTO(centerDTO.getHeaderFooterDTO()));
         return center;
     }
 }

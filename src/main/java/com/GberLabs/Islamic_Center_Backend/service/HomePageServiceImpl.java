@@ -30,4 +30,9 @@ public class HomePageServiceImpl implements HomePageService{
         HomePage savedHomePage=homePageRepository.save(homePage);
         return homePageMapper.fromHomePage(savedHomePage);
     }
+
+    @Override
+    public HomePageDTO getHomePage(Long id) {
+        return homePageMapper.fromHomePage(homePageRepository.findById(id).orElseThrow());
+    }
 }

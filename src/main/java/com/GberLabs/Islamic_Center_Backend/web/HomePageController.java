@@ -17,4 +17,8 @@ public class HomePageController {
     public HomePageDTO createHomePage(@RequestBody HomePageDTO homePageDTO){
         return homePageService.saveHomePage(homePageDTO);
     }
+    @GetMapping("/admin/getHomePage/{id}")
+    public HomePageDTO getHomePage(@PathVariable Long id){
+        return homePageService.getHomePage(id);
+    }
 }

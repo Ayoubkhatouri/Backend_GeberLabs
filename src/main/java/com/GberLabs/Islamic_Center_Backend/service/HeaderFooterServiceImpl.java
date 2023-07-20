@@ -29,4 +29,9 @@ public class HeaderFooterServiceImpl implements HeaderFooterService{
         HeaderFooter savedHeaderFooter=headerFooterRepository.save(headerFooter);
         return headerFooterMapper.fromHeaderFooter(savedHeaderFooter);
     }
+
+    @Override
+    public HeaderFooterDTO getHeaderFooter(Long id) {
+        return headerFooterMapper.fromHeaderFooter(headerFooterRepository.findById(id).orElseThrow());
+    }
 }

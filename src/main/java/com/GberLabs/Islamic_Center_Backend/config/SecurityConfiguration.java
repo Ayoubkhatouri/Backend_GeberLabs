@@ -25,7 +25,7 @@ public class SecurityConfiguration {
         http
                 .csrf().disable()
                 .authorizeHttpRequests().requestMatchers("/swagger-ui/**","/v3/api-docs/**","/api/users/auth/**","/api/users/**","/api/center/anyOne/**").permitAll()
-                .requestMatchers("/api/center/admin/**","/api/theme/admin/**","/api/headerFooter/admin/**","/api/homePage/admin/**").hasAuthority("ADMIN")
+                .requestMatchers("/api/center/admin/**","/api/theme/admin/**","/api/headerFooter/admin/**","/api/homePage/admin/**","/api/service/admin/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

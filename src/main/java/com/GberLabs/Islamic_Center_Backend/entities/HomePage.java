@@ -20,7 +20,7 @@ public class HomePage {
     private List<Event> events=new ArrayList<>();
 
     @OneToMany(mappedBy = "homePage")
-    private List<Serrvice> services=new ArrayList<>();
+    private List<Service> services=new ArrayList<>();
 
     @OneToMany(mappedBy = "homePage")
     private List<Slide> slides=new ArrayList<>();

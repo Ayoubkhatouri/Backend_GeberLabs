@@ -24,4 +24,9 @@ public class ServiceServiceImpl implements ServiceService{
         Service savedService=serviceRepository.save(service);
         return serviceMapper.fromService(savedService);
     }
+
+    @Override
+    public ServiceDTO getService(Long id) {
+        return serviceMapper.fromService(serviceRepository.findById(id).orElseThrow());
+    }
 }

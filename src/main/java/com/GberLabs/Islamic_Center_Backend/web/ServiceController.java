@@ -16,4 +16,9 @@ public class ServiceController {
     public ServiceDTO createService(@RequestBody ServiceDTO serviceDTO){
         return serviceService.saveService(serviceDTO);
     }
+
+    @GetMapping("/admin/getService/{id}")
+    public ServiceDTO getService(@PathVariable Long id){
+        return serviceService.getService(id);
+    }
 }

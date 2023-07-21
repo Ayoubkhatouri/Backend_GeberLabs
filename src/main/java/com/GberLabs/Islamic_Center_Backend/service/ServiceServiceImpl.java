@@ -13,14 +13,12 @@ import lombok.AllArgsConstructor;
 public class ServiceServiceImpl implements ServiceService{
 
     private ServiceRepository serviceRepository;
-    private HomePageRepository homePageRepository;
+  //  private HomePageRepository homePageRepository;
     private ServiceMapperImpl serviceMapper;
 
     @Override
     public ServiceDTO saveService(ServiceDTO serviceDTO) {
-        HomePage homePage=homePageRepository.findById(serviceDTO.getHomPageId()).orElseThrow();
         Service service =serviceMapper.fromServiceDTO(serviceDTO);
-        homePageRepository.save(homePage);
         Service savedService=serviceRepository.save(service);
         return serviceMapper.fromService(savedService);
     }

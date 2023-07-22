@@ -23,4 +23,9 @@ public class EventServiceImpl implements EventService{
         Event savedEvent=eventRepository.save(event);
         return eventMapper.fromEvent(savedEvent);
     }
+
+    @Override
+    public EventDTO getEvent(Long id) {
+        return eventMapper.fromEvent(eventRepository.findById(id).orElseThrow());
+    }
 }

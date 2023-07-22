@@ -16,4 +16,9 @@ public class EventController {
     public EventDTO createEvent(@RequestBody EventDTO eventDTO){
         return  eventService.saveEvent(eventDTO);
     }
+
+    @GetMapping("/admin/getEvent/{id}")
+    public EventDTO getEvent(@PathVariable Long id){
+        return eventService.getEvent(id);
+    }
 }

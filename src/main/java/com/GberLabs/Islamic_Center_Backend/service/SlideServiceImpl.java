@@ -21,4 +21,9 @@ public class SlideServiceImpl implements  SlideSerive{
         Slide savedSlide=slideRepository.save(slide);
         return slideMapper.fromSlide(savedSlide);
     }
+
+    @Override
+    public SlideDTO getSlide(Long id) {
+        return slideMapper.fromSlide(slideRepository.findById(id).orElseThrow());
+    }
 }

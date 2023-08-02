@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class EventController {
     private final EventService eventService;
 
-    @PostMapping("/admin/create")
+    @PostMapping("/user/create")
     public EventDTO createEvent(@RequestBody EventDTO eventDTO){
         return  eventService.saveEvent(eventDTO);
     }
 
-    @GetMapping("/admin/getEvent/{id}")
+    @GetMapping("/user/getEvent/{id}")
     public EventDTO getEvent(@PathVariable Long id){
         return eventService.getEvent(id);
     }

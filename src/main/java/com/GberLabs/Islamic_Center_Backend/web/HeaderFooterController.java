@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class HeaderFooterController {
     private final HeaderFooterService headerFooterService;
-    @PostMapping("/admin/create")
+    @PostMapping("/user/create")
     public HeaderFooterDTO createHeaderFooter(@RequestBody HeaderFooterDTO headerFooterDTO){
         return headerFooterService.saveHeaderFooter(headerFooterDTO);
     }
 
-    @GetMapping("/admin/getHeaderFooter/{id}")
+    @GetMapping("/user/getHeaderFooter/{id}")
     public HeaderFooterDTO getHeaderFooter(@PathVariable Long id){
         return headerFooterService.getHeaderFooter(id);
     }

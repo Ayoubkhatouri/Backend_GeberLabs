@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class ServiceController {
     private final ServiceService serviceService;
 
-    @PostMapping("/admin/create")
+    @PostMapping("/user/create")
     public ServiceDTO createService(@RequestBody ServiceDTO serviceDTO){
         return serviceService.saveService(serviceDTO);
     }
 
-    @GetMapping("/admin/getService/{id}")
+    @GetMapping("/user/getService/{id}")
     public ServiceDTO getService(@PathVariable Long id){
         return serviceService.getService(id);
     }

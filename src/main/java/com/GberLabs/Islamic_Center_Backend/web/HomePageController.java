@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class HomePageController {
     private final HomePageService homePageService;
 
-    @PostMapping("/admin/create")
+    @PostMapping("/user/create")
     public HomePageDTO createHomePage(@RequestBody HomePageDTO homePageDTO){
         return homePageService.saveHomePage(homePageDTO);
     }
-    @GetMapping("/admin/getHomePage/{id}")
+    @GetMapping("/user/getHomePage/{id}")
     public HomePageDTO getHomePage(@PathVariable Long id){
         return homePageService.getHomePage(id);
     }

@@ -32,6 +32,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
         boolean userExists = userRepository
                 .findByEmail(request.getEmail())
                 .isPresent();
+
         if (userExists) {
             throw new IllegalStateException("email already taken");
         }

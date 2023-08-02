@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.*;
 public class SlideController {
     private final SlideSerive slideSerive;
 
-    @PostMapping("/admin/create")
+    @PostMapping("/user/create")
     public SlideDTO createSlide(@RequestBody SlideDTO slideDTO){
         return slideSerive.saveSlide(slideDTO);
     }
 
-    @GetMapping("/admin/getSlide/{id}")
+    @GetMapping("/user/getSlide/{id}")
     public SlideDTO getSlide(@PathVariable Long id){
         return slideSerive.getSlide(id);
     }

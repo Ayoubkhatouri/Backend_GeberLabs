@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.*;
 public class ThemeController {
     private final ThemeService themeService;
 
-    @PostMapping("/admin/create")
+    @PostMapping("/user/create")
     public ThemeDTO createTheme(@RequestBody ThemeDTO themeDTO){
         return themeService.saveTheme(themeDTO);
     }
 
-    @GetMapping ("/admin/getTheme/{id}")
+    @GetMapping ("/user/getTheme/{id}")
     public ThemeDTO getTheme(@PathVariable Long id){
         return themeService.getTheme(id);
     }

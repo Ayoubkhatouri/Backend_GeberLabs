@@ -17,23 +17,23 @@ import java.util.List;
 public class CenterController {
     private final CenterService centerService;
 
-    @PostMapping("/admin/create")
+    @PostMapping("/user/create")
     public CenterDTO createCenter(@RequestBody CenterDTO centerDTO){
         return centerService.saveCenter(centerDTO);
     }
-    @GetMapping("/anyOne/getAll")
+    @GetMapping("/user/getAll")
     public List<CenterDTO> getAllCenters(){
         return centerService.getAllCenters();
     }
-    @GetMapping("/anyOne/getCenter/{id}")
+    @GetMapping("/user/getCenter/{id}")
     public CenterDTO getCenter(@PathVariable Long id){
         return centerService.getCenter(id);
     }
-    @PutMapping("/admin/edit/{id}")
+    @PutMapping("/user/edit/{id}")
     public  CenterDTO editCenter(@PathVariable Long id,@RequestBody CenterEditRequest centerEditRequest){
         return centerService.editCenter(id,centerEditRequest.name, centerEditRequest.description, centerEditRequest.address);
     }
-    @DeleteMapping("/admin/delete/{id}")
+    @DeleteMapping("/user/delete/{id}")
     public void deleteCenter(@PathVariable Long id){
         centerService.deleteCenter(id);
     }

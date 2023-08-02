@@ -10,6 +10,7 @@ public class EventDTO {
     private Long id;
     private String name;
     private String description;
+    private String location;
     private Date startAt;
     private Date endAt;
     private Long homPageId;

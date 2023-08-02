@@ -16,6 +16,10 @@ public class HomePage {
     private Long id;
     private String whoAreWe;
     private String ourVision;
+    private String eventBorderColor;
+    private String eventBgColor;
+    private String eventAdditionalInfoColor;
+    private String iconSlidesColor;
     @OneToMany(mappedBy = "homePage")
     private List<Event> events=new ArrayList<>();
 

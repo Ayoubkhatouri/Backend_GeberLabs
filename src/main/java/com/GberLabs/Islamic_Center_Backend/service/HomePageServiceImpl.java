@@ -1,6 +1,8 @@
 package com.GberLabs.Islamic_Center_Backend.service;
 
 import com.GberLabs.Islamic_Center_Backend.dtos.HomePageDTO;
+import com.GberLabs.Islamic_Center_Backend.editRequest.HeaderFooterEditRequest;
+import com.GberLabs.Islamic_Center_Backend.editRequest.HomePageEditRequest;
 import com.GberLabs.Islamic_Center_Backend.entities.Center;
 import com.GberLabs.Islamic_Center_Backend.entities.HomePage;
 import com.GberLabs.Islamic_Center_Backend.mappers.CenterMapperImpl;
@@ -8,6 +10,7 @@ import com.GberLabs.Islamic_Center_Backend.mappers.HomePageMapperImpl;
 import com.GberLabs.Islamic_Center_Backend.repositories.CenterRepository;
 import com.GberLabs.Islamic_Center_Backend.repositories.HomePageRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 
@@ -34,5 +37,13 @@ public class HomePageServiceImpl implements HomePageService{
     @Override
     public HomePageDTO getHomePage(Long id) {
         return homePageMapper.fromHomePage(homePageRepository.findById(id).orElseThrow());
+    }
+
+    @Override
+    public HomePageDTO editHomePage(Long id, HomePageEditRequest homePageEditRequest) {
+        HomePage homePage=homePageRepository.findById(id).orElseThrow();
+        BeanUtils.copyProperties(homePageEditRequest,homePage);
+        HomePage savedHomePage=homePageRepository.save(homePage);
+        return homePageMapper.fromHomePage(savedHomePage);
     }
 }

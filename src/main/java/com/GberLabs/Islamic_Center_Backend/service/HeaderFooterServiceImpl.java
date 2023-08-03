@@ -2,12 +2,14 @@ package com.GberLabs.Islamic_Center_Backend.service;
 
 
 import com.GberLabs.Islamic_Center_Backend.dtos.HeaderFooterDTO;
+import com.GberLabs.Islamic_Center_Backend.editRequest.HeaderFooterEditRequest;
 import com.GberLabs.Islamic_Center_Backend.entities.Center;
 import com.GberLabs.Islamic_Center_Backend.entities.HeaderFooter;
 import com.GberLabs.Islamic_Center_Backend.mappers.HeaderFooterMapperImpl;
 import com.GberLabs.Islamic_Center_Backend.repositories.CenterRepository;
 import com.GberLabs.Islamic_Center_Backend.repositories.HeaderFooterRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,5 +35,13 @@ public class HeaderFooterServiceImpl implements HeaderFooterService{
     @Override
     public HeaderFooterDTO getHeaderFooter(Long id) {
         return headerFooterMapper.fromHeaderFooter(headerFooterRepository.findById(id).orElseThrow());
+    }
+
+    @Override
+    public HeaderFooterDTO editHeaderFooter(Long id, HeaderFooterEditRequest headerFooterEditRequest) {
+        HeaderFooter headerFooter=headerFooterRepository.findById(id).orElseThrow();
+        BeanUtils.copyProperties(headerFooterEditRequest,headerFooter);
+        HeaderFooter savedHederFooter=headerFooterRepository.save(headerFooter);
+        return headerFooterMapper.fromHeaderFooter(savedHederFooter);
     }
 }

@@ -1,6 +1,7 @@
 package com.GberLabs.Islamic_Center_Backend.service;
 
 import com.GberLabs.Islamic_Center_Backend.dtos.CenterDTO;
+import com.GberLabs.Islamic_Center_Backend.editRequest.CenterEditRequest;
 import com.GberLabs.Islamic_Center_Backend.entities.Center;
 import com.GberLabs.Islamic_Center_Backend.entities.Role;
 import com.GberLabs.Islamic_Center_Backend.entities.User;
@@ -8,6 +9,7 @@ import com.GberLabs.Islamic_Center_Backend.mappers.CenterMapperImpl;
 import com.GberLabs.Islamic_Center_Backend.repositories.CenterRepository;
 import com.GberLabs.Islamic_Center_Backend.repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,11 +51,9 @@ public class CenterServiceImpl implements CenterService{
     }
 
     @Override
-    public CenterDTO editCenter(Long id, String name, String description, String address) {
+    public CenterDTO editCenter(Long id, CenterEditRequest centerEditRequest) {
         Center center=centerRepository.findById(id).orElseThrow();
-        center.setName(name);
-        center.setDescription(description);
-        center.setAddress(address);
+        BeanUtils.copyProperties(centerEditRequest,center);
         Center c=centerRepository.save(center);
         return centerMapper.fromCenter(c);
     }

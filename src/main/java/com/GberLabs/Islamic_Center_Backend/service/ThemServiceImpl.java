@@ -2,6 +2,7 @@ package com.GberLabs.Islamic_Center_Backend.service;
 
 
 import com.GberLabs.Islamic_Center_Backend.dtos.ThemeDTO;
+import com.GberLabs.Islamic_Center_Backend.editRequest.ThemeEditRequest;
 import com.GberLabs.Islamic_Center_Backend.entities.Center;
 import com.GberLabs.Islamic_Center_Backend.entities.Theme;
 import com.GberLabs.Islamic_Center_Backend.mappers.ThemeMapperImpl;
@@ -9,6 +10,7 @@ import com.GberLabs.Islamic_Center_Backend.repositories.CenterRepository;
 import com.GberLabs.Islamic_Center_Backend.repositories.ThemeRepository;
 import lombok.AllArgsConstructor;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,6 +39,14 @@ public class ThemServiceImpl implements ThemeService{
     @Override
     public ThemeDTO getTheme(Long id) {
         return themeMapper.fromTheme(themeRepository.findById(id).orElseThrow());
+    }
+
+    @Override
+    public ThemeDTO editTheme(Long id, ThemeEditRequest themeEditRequest) {
+        Theme theme=themeRepository.findById(id).orElseThrow();
+        BeanUtils.copyProperties(themeEditRequest,theme);
+        Theme savedTheme=themeRepository.save(theme);
+        return themeMapper.fromTheme(savedTheme);
     }
 
 

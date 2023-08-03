@@ -1,6 +1,8 @@
 package com.GberLabs.Islamic_Center_Backend.auth;
 
 
+import com.GberLabs.Islamic_Center_Backend.dtos.CenterDTO;
+import com.GberLabs.Islamic_Center_Backend.entities.Center;
 import com.GberLabs.Islamic_Center_Backend.entities.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,5 +22,6 @@ public class AuthenticationResponse {
     private String ville;
     private String adresse;
     private Role role;
+    private CenterDTO centerDTO;
     private String token;
 }

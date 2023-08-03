@@ -3,8 +3,11 @@ package com.GberLabs.Islamic_Center_Backend.service;
 import com.GberLabs.Islamic_Center_Backend.auth.AuthenticationRequest;
 import com.GberLabs.Islamic_Center_Backend.auth.AuthenticationResponse;
 import com.GberLabs.Islamic_Center_Backend.auth.RegisterRequest;
+import com.GberLabs.Islamic_Center_Backend.entities.Center;
 import com.GberLabs.Islamic_Center_Backend.entities.Role;
 import com.GberLabs.Islamic_Center_Backend.entities.User;
+import com.GberLabs.Islamic_Center_Backend.mappers.CenterMapperImpl;
+import com.GberLabs.Islamic_Center_Backend.repositories.CenterRepository;
 import com.GberLabs.Islamic_Center_Backend.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,6 +27,8 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final CenterMapperImpl centerMapper;
+
 
 
 
@@ -69,6 +74,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
     @Override
     public AuthenticationResponse authenticate(AuthenticationRequest request) throws Exception {
+
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -81,6 +87,8 @@ public class AuthenticationServiceImpl implements AuthenticationService{
         }
 
         var user=userRepository.findByEmail(request.getEmail()).orElseThrow();
+
+
 
         if (!passwordEncoder.matches(request.getPassword(),user.getPassword())) {
             throw new Exception("Invalid password");
@@ -98,7 +106,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
                 .ville(user.getVille())
                 .adresse(user.getAdresse())
                 .role(user.getRole())
-
+                .centerDTO(centerMapper.fromCenter(user.getCenter()))
                 .token(jwtToken)
                 .build();
     }

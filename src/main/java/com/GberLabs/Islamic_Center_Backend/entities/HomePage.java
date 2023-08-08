@@ -29,6 +29,9 @@ public class HomePage {
     @OneToMany(mappedBy = "homePage")
     private List<Slide> slides=new ArrayList<>();
 
+    @OneToMany(mappedBy = "homePage")
+    private List<Testimonial> testimonials=new ArrayList<>();
+
     @OneToOne
     private Center center;
 

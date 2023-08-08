@@ -35,7 +35,7 @@ public class EventServiceImpl implements EventService{
     public EventDTO editEvent(Long id, EventEditRequest eventEditRequest) {
         Event event=eventRepository.findById(id).orElseThrow();
         BeanUtils.copyProperties(eventEditRequest,event);
-        Event  savedEvent=eventRepository.save(event);
+        Event savedEvent=eventRepository.save(event);
         return eventMapper.fromEvent(savedEvent);
     }
 

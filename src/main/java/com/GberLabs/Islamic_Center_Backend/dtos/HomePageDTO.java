@@ -19,5 +19,6 @@ public class  HomePageDTO {
     private List<ServiceDTO>serviceDTOList=new ArrayList<>();
     private List<EventDTO> eventDTOList=new ArrayList<>();
     private List<SlideDTO> slideDTOList=new ArrayList<>();
+    private List<TestimonialDTO> testimonialDTOList=new ArrayList<>();
     private Long centerId;
 }

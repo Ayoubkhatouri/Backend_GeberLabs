@@ -16,6 +16,7 @@ public class  HomePageDTO {
     private String eventBgColor;
     private String eventAdditionalInfoColor;
     private String iconSlidesColor;
+    private String iconSlidesBgColor;
     private List<ServiceDTO>serviceDTOList=new ArrayList<>();
     private List<EventDTO> eventDTOList=new ArrayList<>();
     private List<SlideDTO> slideDTOList=new ArrayList<>();

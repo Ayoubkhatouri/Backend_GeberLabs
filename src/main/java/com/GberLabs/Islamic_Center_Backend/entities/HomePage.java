@@ -20,6 +20,7 @@ public class HomePage {
     private String eventBgColor;
     private String eventAdditionalInfoColor;
     private String iconSlidesColor;
+    private String iconSlidesBgColor;
     @OneToMany(mappedBy = "homePage")
     private List<Event> events=new ArrayList<>();
 

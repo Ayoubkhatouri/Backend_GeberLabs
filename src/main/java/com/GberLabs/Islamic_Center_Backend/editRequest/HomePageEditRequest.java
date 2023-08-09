@@ -10,4 +10,5 @@ public class HomePageEditRequest {
     private String eventBgColor;
     private String eventAdditionalInfoColor;
     private String iconSlidesColor;
+    private String iconSlidesBgColor;
 }

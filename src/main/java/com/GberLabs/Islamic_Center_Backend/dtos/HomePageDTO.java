@@ -10,8 +10,6 @@ import java.util.List;
 @Data
 public class  HomePageDTO {
     private Long id;
-    private String whoAreWe;
-    private String ourVision;
     private String eventBorderColor;
     private String eventBgColor;
     private String eventAdditionalInfoColor;
@@ -21,5 +19,6 @@ public class  HomePageDTO {
     private List<EventDTO> eventDTOList=new ArrayList<>();
     private List<SlideDTO> slideDTOList=new ArrayList<>();
     private List<TestimonialDTO> testimonialDTOList=new ArrayList<>();
+    private List<AboutUsDTO> aboutUsDTOList=new ArrayList<>();
     private Long centerId;
 }

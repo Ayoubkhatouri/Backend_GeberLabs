@@ -14,8 +14,6 @@ import java.util.List;
 public class HomePage {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String whoAreWe;
-    private String ourVision;
     private String eventBorderColor;
     private String eventBgColor;
     private String eventAdditionalInfoColor;
@@ -32,6 +30,9 @@ public class HomePage {
 
     @OneToMany(mappedBy = "homePage")
     private List<Testimonial> testimonials=new ArrayList<>();
+
+    @OneToMany(mappedBy = "homePage")
+    private List<AboutUs> aboutUses=new ArrayList<>();
 
     @OneToOne
     private Center center;

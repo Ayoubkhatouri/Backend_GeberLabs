@@ -17,6 +17,7 @@ public class HomePageMapperImpl {
     private final SlideMapperImpl slideMapper;
     private final CenterRepository centerRepository;
     private final TestimonialMapperImpl testimonialMapper;
+    private final AboutUsMapperImpl aboutUsMapper;
 
     public HomePageDTO fromHomePage(HomePage homePage){
         if(homePage==null) return null;
@@ -27,6 +28,7 @@ public class HomePageMapperImpl {
         homePageDTO.setEventDTOList(homePage.getEvents().stream().map(e->eventMapper.fromEvent(e)).collect(Collectors.toList()));
         homePageDTO.setSlideDTOList(homePage.getSlides().stream().map(s->slideMapper.fromSlide(s)).collect(Collectors.toList()));
         homePageDTO.setTestimonialDTOList(homePage.getTestimonials().stream().map(t->testimonialMapper.fromTestimonial(t)).collect(Collectors.toList()));
+        homePageDTO.setAboutUsDTOList(homePage.getAboutUses().stream().map(a->aboutUsMapper.fromAboutUs(a)).collect(Collectors.toList()));
         return homePageDTO;
     }
 
@@ -39,6 +41,7 @@ public class HomePageMapperImpl {
         homePage.setEvents(homePageDTO.getEventDTOList().stream().map(e->eventMapper.fromEventDTO(e)).collect(Collectors.toList()));
         homePage.setSlides(homePageDTO.getSlideDTOList().stream().map(s->slideMapper.fromSlideDTO(s)).collect(Collectors.toList()));
         homePage.setTestimonials(homePageDTO.getTestimonialDTOList().stream().map(t->testimonialMapper.fromTestimonialDTO(t)).collect(Collectors.toList()));
+        homePage.setAboutUses(homePageDTO.getAboutUsDTOList().stream().map(a->aboutUsMapper.fromAboutUsDTO(a)).collect(Collectors.toList()));
         return homePage;
     }
 }

@@ -6,4 +6,5 @@ import lombok.Data;
 public class TestimonialEditRequest {
     private String userName;
     private String comment;
+    private String image;
 }

@@ -18,7 +18,8 @@ public class Testimonial {
     private Long id;
     private String userName;
     private String comment;
-
+    @Column(columnDefinition = "LONGTEXT")
+    private String image;
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private HomePage homePage;

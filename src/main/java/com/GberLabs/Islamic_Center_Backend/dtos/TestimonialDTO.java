@@ -7,5 +7,6 @@ public class TestimonialDTO {
     private Long id;
     private String userName;
     private String comment;
+    private String image;
     private Long homePageId;
 }

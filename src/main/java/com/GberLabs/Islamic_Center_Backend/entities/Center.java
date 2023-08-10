@@ -31,5 +31,7 @@ public class Center {
     @OneToOne(mappedBy = "center")
     private HomePage homePage;
 
+    @OneToOne(mappedBy = "center")
+    private DonationInfo donationInfo;
 
 }

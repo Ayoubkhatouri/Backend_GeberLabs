@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class Slide {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(columnDefinition = "LONGTEXT")
     private String image;
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

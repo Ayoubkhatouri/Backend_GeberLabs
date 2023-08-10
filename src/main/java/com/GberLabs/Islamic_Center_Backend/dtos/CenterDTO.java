@@ -17,4 +17,5 @@ public class CenterDTO {
     private ThemeDTO themeDTO;
     private HeaderFooterDTO headerFooterDTO;
     private HomePageDTO homePageDTO;
+    private DonationInfoDTO donationInfoDTO;
 }

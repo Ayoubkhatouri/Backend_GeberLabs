@@ -19,7 +19,9 @@ public class HeaderFooter {
     private boolean headerPrayerTime;
     private boolean headerTestimonials;
     private boolean headerContanctUs;
+    @Column(columnDefinition = "LONGTEXT")
     private String largeLogo;
+    @Column(columnDefinition = "LONGTEXT")
     private String smallLogo;
     private String footerBGColor;
     private String footerTextColor ;

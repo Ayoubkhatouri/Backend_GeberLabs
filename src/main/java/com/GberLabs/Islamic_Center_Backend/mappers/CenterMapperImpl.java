@@ -3,6 +3,7 @@ package com.GberLabs.Islamic_Center_Backend.mappers;
 
 import com.GberLabs.Islamic_Center_Backend.dtos.CenterDTO;
 import com.GberLabs.Islamic_Center_Backend.entities.Center;
+import com.GberLabs.Islamic_Center_Backend.repositories.DonationInfoRepository;
 import com.GberLabs.Islamic_Center_Backend.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -19,6 +20,7 @@ public class CenterMapperImpl {
     private final UserRepository userRepository;
     private final HeaderFooterMapperImpl headerFooterMapper;
     private final HomePageMapperImpl homePageMapper;
+    private final DonationInfoMapperImpl donationInfoMapper;
 
     public CenterDTO fromCenter(Center center){
         if(center==null) return null;
@@ -29,6 +31,7 @@ public class CenterMapperImpl {
         centerDTO.setThemeDTO(themeMapper.fromTheme(center.getTheme()));
         centerDTO.setHeaderFooterDTO(headerFooterMapper.fromHeaderFooter(center.getHeaderFooter()));
         centerDTO.setHomePageDTO(homePageMapper.fromHomePage(center.getHomePage()));
+        centerDTO.setDonationInfoDTO(donationInfoMapper.fromDonationInfo(center.getDonationInfo()));
         return centerDTO;
     }
     public Center fromCenterDTo(CenterDTO centerDTO){
@@ -40,6 +43,7 @@ public class CenterMapperImpl {
         center.setTheme(themeMapper.fromThemDTO(centerDTO.getThemeDTO()));
         center.setHeaderFooter(headerFooterMapper.fromHeaderFooterDTO(centerDTO.getHeaderFooterDTO()));
         center.setHomePage(homePageMapper.fromHomePageDTO(centerDTO.getHomePageDTO()));
+        center.setDonationInfo(donationInfoMapper.fromDonationInfoDTO(centerDTO.getDonationInfoDTO()));
         return center;
     }
 }

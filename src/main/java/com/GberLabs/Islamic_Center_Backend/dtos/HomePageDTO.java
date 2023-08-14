@@ -20,5 +20,6 @@ public class  HomePageDTO {
     private List<SlideDTO> slideDTOList=new ArrayList<>();
     private List<TestimonialDTO> testimonialDTOList=new ArrayList<>();
     private List<AboutUsDTO> aboutUsDTOList=new ArrayList<>();
+    private PrayerDTO prayerDTO;
     private Long centerId;
 }

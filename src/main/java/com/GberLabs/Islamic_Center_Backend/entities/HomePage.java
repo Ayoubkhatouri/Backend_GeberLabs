@@ -37,4 +37,6 @@ public class HomePage {
     @OneToOne
     private Center center;
 
+    @OneToOne(mappedBy = "homePage")
+    private Prayer prayer;
 }

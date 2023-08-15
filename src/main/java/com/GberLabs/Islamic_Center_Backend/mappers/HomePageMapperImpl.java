@@ -17,6 +17,7 @@ public class HomePageMapperImpl {
     private final SlideMapperImpl slideMapper;
     private final CenterRepository centerRepository;
     private final TestimonialMapperImpl testimonialMapper;
+    private final PrayerMapperImpl prayerMapper;
     private final AboutUsMapperImpl aboutUsMapper;
 
     public HomePageDTO fromHomePage(HomePage homePage){
@@ -29,6 +30,7 @@ public class HomePageMapperImpl {
         homePageDTO.setSlideDTOList(homePage.getSlides().stream().map(s->slideMapper.fromSlide(s)).collect(Collectors.toList()));
         homePageDTO.setTestimonialDTOList(homePage.getTestimonials().stream().map(t->testimonialMapper.fromTestimonial(t)).collect(Collectors.toList()));
         homePageDTO.setAboutUsDTOList(homePage.getAboutUses().stream().map(a->aboutUsMapper.fromAboutUs(a)).collect(Collectors.toList()));
+        homePageDTO.setPrayerDTO(prayerMapper.fromPrayer(homePage.getPrayer()));
         return homePageDTO;
     }
 
@@ -42,6 +44,7 @@ public class HomePageMapperImpl {
         homePage.setSlides(homePageDTO.getSlideDTOList().stream().map(s->slideMapper.fromSlideDTO(s)).collect(Collectors.toList()));
         homePage.setTestimonials(homePageDTO.getTestimonialDTOList().stream().map(t->testimonialMapper.fromTestimonialDTO(t)).collect(Collectors.toList()));
         homePage.setAboutUses(homePageDTO.getAboutUsDTOList().stream().map(a->aboutUsMapper.fromAboutUsDTO(a)).collect(Collectors.toList()));
+        homePage.setPrayer(prayerMapper.fromPrayerDTO(homePageDTO.getPrayerDTO()));
         return homePage;
     }
 }

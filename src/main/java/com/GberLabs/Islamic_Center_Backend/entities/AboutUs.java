@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class AboutUs {
+    //test
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

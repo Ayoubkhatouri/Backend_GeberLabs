@@ -1,16 +1,13 @@
-package com.GberLabs.Islamic_Center_Backend.dtos;
+package com.GberLabs.Islamic_Center_Backend.editRequest;
 
 import lombok.Data;
 
 @Data
-public class PrayerDTO {
-    private Long id;
+public class PrayerEditRequest {
     private String country;
     private String city;
     private String state;
     private double highLatitude;
     private double prayer;
     private double asar;
-    private Long homePageId;
-    private PrayerTimeDTO prayerTimeDTO;
 }

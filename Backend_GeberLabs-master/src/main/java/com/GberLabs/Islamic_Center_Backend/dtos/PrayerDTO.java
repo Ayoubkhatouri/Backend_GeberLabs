@@ -12,5 +12,4 @@ public class PrayerDTO {
     private double prayer;
     private double asar;
     private Long homePageId;
-    private PrayerTimeDTO prayerTimeDTO;
 }

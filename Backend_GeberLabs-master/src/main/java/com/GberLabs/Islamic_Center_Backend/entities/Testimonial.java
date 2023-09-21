@@ -1,5 +1,6 @@
 package com.GberLabs.Islamic_Center_Backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,18 +12,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Prayer {
+public class Testimonial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String country;
-    private String city;
-    private String state;
-    private double highLatitude;
-    private double prayer;
-    private double asar;
-    @OneToOne
+    private String userName;
+    private String comment;
+    @Column(columnDefinition = "LONGTEXT")
+    private String image;
+    @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private HomePage homePage;
-    @OneToOne(mappedBy = "prayer")
-    private PrayerTime prayerTime;
 }

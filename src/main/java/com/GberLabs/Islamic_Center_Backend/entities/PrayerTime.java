@@ -11,18 +11,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Prayer {
+public class PrayerTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String country;
-    private String city;
-    private String state;
-    private double highLatitude;
-    private double prayer;
-    private double asar;
+    private String fajr;
+    private String shuruq;
+    private String zohar;
+    private String asar;
+    private String maghrib;
+    private String isha;
+    private String day;
+    private String month;
+    private String year;
     @OneToOne
-    private HomePage homePage;
-    @OneToOne(mappedBy = "prayer")
-    private PrayerTime prayerTime;
+    private Prayer prayer;
+
 }

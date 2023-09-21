@@ -23,6 +23,4 @@ public class Prayer {
     private double asar;
     @OneToOne
     private HomePage homePage;
-    @OneToOne(mappedBy = "prayer")
-    private PrayerTime prayerTime;
 }
